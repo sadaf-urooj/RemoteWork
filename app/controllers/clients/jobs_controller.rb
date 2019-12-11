@@ -10,7 +10,6 @@ module Clients
       @job = Job.new
     end
 
-
     def create
       @job = Job.new(job_params.merge(client_id: current_client.id))
       if @job.save
@@ -20,8 +19,6 @@ module Clients
       end
     end
 
-
-
     def update
       if @job.update(job_params)
         redirect_to clients_job_path(@job), notice: 'Employee Updated Successfully'
@@ -29,8 +26,6 @@ module Clients
         render :edit
       end
     end
-
-
 
     def destroy
       @job.destroy
