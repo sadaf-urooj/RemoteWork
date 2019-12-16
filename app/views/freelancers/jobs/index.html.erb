@@ -1,0 +1,91 @@
+  <div class="container mt-5">
+                                    <!-- search box-->
+    <div class="row">
+      <div class=" <%= freelancer_signed_in? ? 'col-9' : 'col-12' %>">
+        <%= form_tag( method: :get) do %>
+          <div class="row">
+              <div class="col-8">
+                <%= text_field_tag :store, params[:store], class: 'form-control' %>
+              </div>
+              <div class="col-2">
+                <%= submit_tag 'Search', name: nil %>
+              </div>
+              <div class="col-2">
+                <%= link_to 'Filters', "#", class: 'btn btn-dark btn-sm' %>
+              </div>
+        <% end %>
+
+
+                                            <!--card-->
+
+        <div class="row mt-3">
+          <div class="col">
+            <% @job.each do |job| %>
+            <div class="card mt-5">
+              <div class="card-body mt-3">
+                <h5 class="card-title"> <%= job.title %></h5>
+                <hr>
+                <p class="font-weight-bold">Description:</p>
+                <div class="card-text"> <%= job.description %></div>
+                <div class="card-text mt-4">
+                  <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %></div>
+                  <a href="#" class="btn btn-primary float-right">Apply</a>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <% if freelancer_signed_in? %>
+                                        <!-- image-->
+      <div class="col-3">
+        <div class="card">
+          <div class="row">
+            <div class=" offset-3 col-6 text-center p-0">
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, class: "w-100", alt: "profile image", data: {target: 'image-preview.image'} %>
+              <% else %>
+                <i class="fas fa-user-circle fa-5x" ></i>
+              <% end %>
+              <%#= image_tag '',  class: "fas fa-user-circle fa-5x mt-3"  , id: 'identifier' %>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-text mt-5 text-center"><%= current_user.first_name %></div>
+            <div class="card-text mx-5 text-center"><%= current_user.designation %></div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
