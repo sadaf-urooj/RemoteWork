@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :current_user
 
+    def authenticate_user!
+      authenticate_client! || authenticate_freelancer!
+    end
+
     def user_signed_in?
       client_signed_in? || freelancer_signed_in?
     end
@@ -11,12 +15,10 @@ class ApplicationController < ActionController::Base
       current_client || current_freelancer
     end
 
-
-
   protected
 
     def configure_permitted_parameters
-      added_attrs = [:first_name, :last_name, :designation, :overview, :email, :password, :password_confirmation, :remember_me, :image, skill_ids: []]
+      added_attrs = [:first_name, :last_name, :designation, :overview, :email, :password, :password_confirmation, :remember_me, :image, :phone, skill_ids: []]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end

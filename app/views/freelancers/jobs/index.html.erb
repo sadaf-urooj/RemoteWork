@@ -2,25 +2,25 @@
                                     <!-- search box-->
     <div class="row">
       <div class=" <%= freelancer_signed_in? ? 'col-9' : 'col-12' %>">
-        <%= form_tag( method: :get) do %>
+        <%= form_tag freelancers_jobs_path, method: 'get' do %>
           <div class="row">
-              <div class="col-8">
-                <%= text_field_tag :store, params[:store], class: 'form-control' %>
+              <div class="col-6">
+                <%= text_field_tag :search, params[:search], class: 'form-control' %>
               </div>
               <div class="col-2">
-                <%= submit_tag 'Search', name: nil %>
+                <%= select_tag :skills, options_for_select(Skill.all.map {|s| [s.name]}, params[:skills]),{:prompt => '-Skills-',  class: "form-control"} %>
               </div>
-              <div class="col-2">
-                <%= link_to 'Filters', "#", class: 'btn btn-dark btn-sm' %>
+              <div class="col-4">
+                <%= submit_tag 'Search', class: "btn btn-dark" %>
+                <%= link_to 'Clear Search', freelancers_jobs_path, class: "btn btn-dark" %>
               </div>
         <% end %>
-
 
                                             <!--card-->
 
         <div class="row mt-3">
           <div class="col">
-            <% @job.each do |job| %>
+            <% @jobs.each do |job| %>
             <div class="card mt-5">
               <div class="card-body mt-3">
                 <h5 class="card-title"> <%= job.title %></h5>
@@ -28,8 +28,13 @@
                 <p class="font-weight-bold">Description:</p>
                 <div class="card-text"> <%= job.description %></div>
                 <div class="card-text mt-4">
-                  <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %></div>
-                  <a href="#" class="btn btn-primary float-right">Apply</a>
+                  <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %>
+                </div>
+                  <% if freelancer_signed_in? && job.applied?(current_freelancer) %>
+                    <%= button_tag 'Applied',  disabled: true, class: 'btn btn-primary btn-sm float-right rounded-pill' %>
+                  <% else %>
+                    <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id) , remote: true,  class: 'btn btn-primary btn-sm float-right rounded-pill px-3' %>
+                  <% end %>
               </div>
             </div>
             <% end %>
@@ -37,29 +42,31 @@
         </div>
       </div>
     </div>
+                              <!-- image-->
       <% if freelancer_signed_in? %>
-                                        <!-- image-->
-      <div class="col-3">
-        <div class="card">
-          <div class="row">
-            <div class=" offset-3 col-6 text-center p-0">
-              <% if current_user.image.attached? %>
-                <%= image_tag current_user.image, class: "w-100", alt: "profile image", data: {target: 'image-preview.image'} %>
-              <% else %>
-                <i class="fas fa-user-circle fa-5x" ></i>
-              <% end %>
-              <%#= image_tag '',  class: "fas fa-user-circle fa-5x mt-3"  , id: 'identifier' %>
+        <div class="col-3">
+          <div class="card">
+            <div class="row">
+              <div class=" offset-3 col-6 text-center p-0">
+                <% if current_user.image.attached? %>
+                  <%= image_tag current_user.image, class: "w-100", alt: "profile image", data: {target: 'image-preview.image'} %>
+                <% else %>
+                  <i class="fas fa-user-circle fa-5x" ></i>
+                <% end %>
+                <%#= image_tag '',  class: "fas fa-user-circle fa-5x mt-3"  , id: 'identifier' %>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-text mt-5 text-center"><%= current_freelancer.first_name.capitalize %></div>
+              <div class="card-text mx-5 text-center"><%= current_freelancer.designation&.capitalize %></div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="card-text mt-5 text-center"><%= current_user.first_name %></div>
-            <div class="card-text mx-5 text-center"><%= current_user.designation %></div>
-          </div>
-        </div>
-    </div>
+          <div class="text-center mt-3"><i class="fa-check-circle <%= current_freelancer.proposals.none? ?  'far' : 'fas '%>"></i> <%= current_freelancer.proposals.count %>   <i>Proposals </i></div>
+          <div class="text-center"><i class="fa-check-circle <%= current_freelancer.contracts.none? ?  'far' : 'fas '%>"></i> <%= current_freelancer.contracts.count %>  <i> Contracts </i></div>
+      </div>
+    <% end %>
   </div>
 
-    <% end %>
 
 
 
@@ -89,3 +96,4 @@
 
 
 
+</div>

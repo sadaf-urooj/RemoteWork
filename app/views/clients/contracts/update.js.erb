@@ -1,0 +1,8 @@
+
+var oldCard = document.querySelector('#card_<%= @contract.id %>');
+
+var newCard = document.createElement('div');
+newCard.innerHTML = "<%= j(render partial: 'clients/contracts/contract',locals: {contract: @contract}) %>";
+
+// replace container with newDiv
+oldCard.parentNode.replaceChild(newCard, oldCard);
