@@ -1,0 +1,31 @@
+<div class = "container">
+  <div class="col-sm-6 offset-3">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h1>Job Detail</h1><br>
+        <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %>
+        <br><br>
+        <p>
+          <strong>Title:</strong>
+          <%= @job.title.capitalize %>
+        </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @job.description %>
+        </p>
+        <p>
+          <strong>Department:</strong>
+          <%= @job.skills.map(&:name).map(&:capitalize).join(',')  %>
+        </p>
+        <p>
+          <strong>Started Date:</strong>
+          <%= @job.start_date %>
+        </p>
+        <p>
+          <strong>End Date:</strong>
+          <%= @job.end_date %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

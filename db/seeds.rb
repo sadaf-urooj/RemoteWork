@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+skills = ['html', 'javascript', 'bootstrap', 'ruby', 'sinatra', 'c#', 'phython']
+
+# s = Skill.create(name: 'html')
+
+
+skills.each do |s_name| 
+    Skill.find_or_create_by(name: s_name)
+end

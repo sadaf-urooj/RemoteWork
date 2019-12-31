@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :clients
+  devise_for :freelancers
+  namespace :clients do
+    resources :jobs
+  end
+  namespace :freelancers do
+    resources :jobs
+  end
 end
+
+
+
