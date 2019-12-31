@@ -7,7 +7,7 @@ class Proposal < ApplicationRecord
   has_one :contract, dependent: :destroy
   has_many_attached :documents
 
-  # def send_message
-  #   TwilioClient.new.send_text(job.client, "#{freelancer.email} has applied for #{job.title}" )
-  # end
+  def send_message
+    TwilioClient.new.send_text(job.client, "#{freelancer.email} has applied for #{job.title}" )
+  end
 end

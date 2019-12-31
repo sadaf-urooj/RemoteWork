@@ -14,8 +14,7 @@ module Freelancers
         def create
           @proposal = Proposal.new(proposal_params)          
           # @proposal.job_id = params[:job_id]
-          @proposal.freelancer_id = current_freelancer.id
-          byebug
+          @proposal.freelancer_id = current_freelancer.id        
           if @proposal.save
 
             redirect_to freelancers_jobs_path
