@@ -42,7 +42,7 @@
                 <div class="card-text mt-4">
                   <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %>
                 </div>
-                  <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id), class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
+                  <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id),  remote: (freelancer_signed_in? ? true : false), class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
               </div>
             </div>
           <% end %>
