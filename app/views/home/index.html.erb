@@ -18,17 +18,12 @@
           </button>
           <%= alert %></div><% end %>
         </div>
-
         <h1 class="font-weight-light text-white">We expertly match professionals and clients to business seeking opportunities.</h1>
-
         <%= link_to  'Start Posting Jobs', clients_jobs_path, class: "btn btn-success mt-5 rounded-pill px-5" %>
-
       </div>
     </div>
   </div>
 </header>
-
-
 
 <!-- Page Content -->
 
@@ -47,9 +42,7 @@
                 <div class="card-text mt-4">
                   <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %>
                 </div>
-
-                  <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id), remote: true,  class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
-
+                  <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id), class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
               </div>
             </div>
           <% end %>

@@ -15,7 +15,10 @@
     <h5 class="card-title">Overview</h5>
     <p class="card-text"><%= proposal.objective %></p>
     <% proposal.documents.each do |document| %>
-      <%= link_to document.filename , rails_blob_path(document, disposition: :attachement), class: 'card-text'  %>
+        <%= link_to   rails_blob_path(document, disposition: :attachement), class: 'card-text btn'  do %>
+        <i class="fas fa-download"></i>
+        <%= document.filename %>
+        <% end %>
     <% end %>
 
     <% if proposal.contract.present? %>
