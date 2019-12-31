@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <% @proposals.each do |proposal|  %>
+    <div class="card mt-5">
+      <div class="card-header">
+        <h5 aclass="w-50 float-left"> <%= proposal.job.title  %></h5>
+        <div class="w-50 float-right text-right">
+          <% if proposal.freelancer.image.attached? %>
+            <%= image_tag proposal.freelancer.image, width: 30, class: 'rounded-circle',  alt: "profile image" %>
+          <% else %>
+            <i class="fas fa-user-circle fa-5x" ></i>
+          <% end %>
+          <%= "#{ proposal.freelancer.first_name.capitalize  }  #{ proposal.freelancer.last_name.capitalize }" %>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Overview</h5>
+        <p class="card-text"><%= proposal.objective %></p>
+        <% proposal.documents.each do |document| %>
+          <%= link_to document.filename , rails_blob_path(document, disposition: :attachement), class: 'card-text'  %>
+        <% end %>
+
+        <% if proposal.contract.present? %>
+          <%= button_tag 'Hired',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+        <% else %>
+          <%= button_tag 'Applied',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+</div>

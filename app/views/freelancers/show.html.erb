@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header"><h5 class="w-75 d-inline-block">Profile</h5>
+      <% if freelancer_signed_in? %>
+        <div class=" d-inline-block text-right"><i class="fas fa-pen"></i></div>
+        <%= link_to 'Edit',  edit_freelancer_registration_path %>
+    </div>
+      <% end %>
+    <!--    <h5 class="card-header">Profile</h5>-->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <% if current_user.image.attached? %>
+            <%= image_tag current_user.image, class: "w-100 rounded-circle", alt: "profile image", data: {target: 'image-preview.image'} %>
+          <% else %>
+            <i class="fas fa-user-circle fa-5x" ></i>
+          <% end %>
+        </div>
+        <div class="card-text col-10">
+          <div class="card-text font-weight-bold"> <%= current_user.first_name.capitalize %></div>
+          <div class="card-text font-weight-bold mt-1"> <%= current_user.designation.capitalize %></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p class="font-weight-bold mt-3 mb-0">Description:</p>
+          <div class="card-text"> <%= current_user.overview %></div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <span class="font-weight-bold">Skills: </span><%= current_user.skills.map(&:name).map(&:capitalize).join('    |   ') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,23 @@
+@import "variables";
+//@import "bootswatch";
+@import "bootstrap/scss/bootstrap";
+
+.image {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('slide.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.search{
+  height: 27px;
+}
+
+
+
+footer{
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
