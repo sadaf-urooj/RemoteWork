@@ -23,11 +23,11 @@ import "controllers"
 
 $(window).on("scroll", function() {
     if($(window).scrollTop() > 1000) {
-        $("nav").addClass("bg-primary");
-        $("nav").addClass("navbar-dark");
+        $(".nav--home").addClass("bg-primary");
+        $(".nav").addClass("navbar-dark");
     } else {
         //remove the background property so it comes transparent again (defined in your css)
-        $("nav").removeClass("bg-primary");
-        $("nav").removeClass("navbar-dark");
+        $(".nav--home").removeClass("bg-primary");
+        $(".nav--home").removeClass("navbar-dark");
     }
 });

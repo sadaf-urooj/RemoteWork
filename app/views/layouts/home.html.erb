@@ -1,112 +1,102 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RemoteWork</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>RemoteWork</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script src="https://kit.fontawesome.com/f177f939a1.js"></script>
-</head>
+    <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/f177f939a1.js"></script>
+  </head>
 
-<body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg  shadow fixed-top">
-  <div class="container">
-    <%= link_to  root_path alt: "Brand", class: 'navbar-brand' do  %>
-      <%= image_tag "Logo.png" %>
-    <% end %>
-
-      <!--    search bar-->
-
-      <%= form_tag freelancers_jobs_path, method: 'get' do %>
-            <%= text_field_tag :search, params[:search], class: 'form-control ml-5 rounded-pill mt-2 search', placeholder: 'Search Jobs' %>
-      <% end %>
-
-
-
-
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Jobs',  freelancer_signed_in? ? freelancer_root_path: client_root_path,  class: "nav-link text-white" %>
-          </li>
-          <li class="nav-item">
-
-            <%= link_to 'Proposals',  freelancer_signed_in? ? freelancers_proposals_path : clients_proposals_path,  class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Contracts',  freelancer_signed_in? ? freelancers_contracts_path : clients_contracts_path,  class: "nav-link" %>
-          </li>
+  <body class="body-color">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg  shadow fixed-top nav--home">
+      <div class="container">
+        <%= link_to  root_path alt: "Brand", class: 'navbar-brand' do  %>
+          <%= image_tag "Logo.png" %>
         <% end %>
-      </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <div class="dropdown">
-            <i class="fas fa-bell"></i>
-            <button class=" btn btn-link mr-2"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if current_user.respond_to?(:image) && current_user.image.attached? %>
-                <%= image_tag current_user.image, width: 30, class: 'rounded-circle' ,alt: "profile image", data: {target: 'image-preview.image'} %>
-              <% else %>
-                <i class="fas fa-user-circle fa-1x" ></i>
-              <% end %>
+          <!--search bar-->
+          <%= form_tag freelancers_jobs_path, method: 'get' do %>
+                <%= text_field_tag :search, params[:search], class: 'form-control ml-5 rounded-pill mt-2 search', placeholder: 'Search Jobs' %>
+          <% end %>
 
-              <%= "#{current_user.first_name.capitalize  }  #{current_user.last_name.capitalize }" %>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <%= link_to 'Client', destroy_client_session_path, method: :delete, class: "dropdown-item"%>
-              <% if freelancer_signed_in? %>
-                <%= link_to 'Profile', edit_freelancer_registration_path, class: "dropdown-item" %>
-                <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete,  class: "dropdown-item" %>
-              <% else %>
-                <%= link_to 'Logout', destroy_client_session_path, method: :delete,  class: "dropdown-item" %>
-              <% end %>
-            </div>
-          </div>
-        <% else %>
-          <div class="dropdown">
-            <button class="btn btn-sm text-white rounded-pill" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Sign_up
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <%= link_to  'Client', new_client_registration_path, class: "dropdown-item" %>
-              <%= link_to  'Freelancer', new_freelancer_registration_path, class: "dropdown-item"  %>
-            </div>
-          </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
 
-          <div class="dropdown">
-            <button class="btn btn-sm  ml-3 text-white rounded-pill btn-success px-3" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Login
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <%= link_to  'Client', new_client_session_path, class: "dropdown-item btn" %>
-              <%= link_to  'Freelancer', new_freelancer_session_path, class: "dropdown-item btn" %>
-            </div>
-          </div>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'Jobs',  freelancer_signed_in? ? freelancers_jobs_path: clients_jobs_path,  class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Proposals',  freelancer_signed_in? ? freelancers_proposals_path : clients_proposals_path,  class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Contracts',  freelancer_signed_in? ? freelancers_contracts_path : clients_contracts_path,  class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
 
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <div class="dropdown">
+                <i class="fas fa-bell"></i>
+                <button class=" btn btn-link mr-2"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if current_user.respond_to?(:image) && current_user.image.attached? %>
+                    <%= image_tag current_user.image, width: 30, class: 'rounded-circle' ,alt: "profile image", data: {target: 'image-preview.image'} %>
+                  <% else %>
+                    <i class="fas fa-user-circle fa-1x" ></i>
+                  <% end %>
 
-<%= yield %>
-<div id="modal"></div>
+                  <%= "#{current_user.first_name.capitalize  }  #{current_user.last_name.capitalize }" %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <% if freelancer_signed_in? %>
+                    <%= link_to 'Profile', edit_freelancer_registration_path, class: "dropdown-item" %>
+                    <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete,  class: "dropdown-item" %>
+                  <% else %>
+                    <%= link_to 'Logout', destroy_client_session_path, method: :delete,  class: "dropdown-item" %>
+                  <% end %>
+                </div>
+              </div>
+            <% else %>
+              <div class="dropdown">
+                <button class="btn btn-sm text-white rounded-pill" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sign_up
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <%= link_to  'Client', new_client_registration_path, class: "dropdown-item" %>
+                  <%= link_to  'Freelancer', new_freelancer_registration_path, class: "dropdown-item"  %>
+                </div>
+              </div>
 
-<footer class="container-fluid bg-4 text-center bg-primary">
-  <p class="text-white">Copyright2019 www.RemoteWork.com</p>
-</footer>
+              <div class="dropdown">
+                <button class="btn btn-sm  ml-3 text-white rounded-pill btn-success px-3" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Login
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <%= link_to  'Client', new_client_session_path, class: "dropdown-item btn" %>
+                  <%= link_to  'Freelancer', new_freelancer_session_path, class: "dropdown-item btn" %>
+                </div>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-</body>
+    <%= yield %>
+    <div id="modal"></div>
+
+    <footer class="container-fluid bg-4 text-center bg-primary">
+      <p class="text-white">Copyright2019 www.RemoteWork.com</p>
+    </footer>
+  </body>
 </html>
 
 

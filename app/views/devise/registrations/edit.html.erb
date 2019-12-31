@@ -1,6 +1,6 @@
 <div class="container mt-5">
-    <div class="card">
-      <div class="card-header"><h5 class="w-75 d-inline-block">Edit <%= resource_name.to_s.humanize %></h5>
+    <div class="card border-0">
+      <div class="card-header bg-white"><h5 class="w-75 d-inline-block">Edit <%= resource_name.to_s.humanize %></h5>
         <div class=" d-inline-block text-right"><i class="fas fa-eye"></i></div>
         <%= link_to 'View', freelancer_path(resource.id) %>
       </div>
@@ -19,9 +19,9 @@
 </div>
 
 
-              <%# if  client_signed_in?  %>
-              <%#= render(:partial => 'client', :locals => {:f => f})   %>
-              <%# else %>
-              <%#= render(:partial => 'freelancer', :locals => {:f => f})  %>
-              <%#end  %>
+  <%# if  client_signed_in?  %>
+  <%#= render(:partial => 'client', :locals => {:f => f})   %>
+  <%# else %>
+  <%#= render(:partial => 'freelancer', :locals => {:f => f})  %>
+  <%#end  %>
 
