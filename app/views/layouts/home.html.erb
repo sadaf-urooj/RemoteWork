@@ -45,7 +45,6 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <div class="dropdown">
-                <i class="fas fa-bell"></i>
                 <button class=" btn btn-link mr-2"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <% if current_user.respond_to?(:image) && current_user.image.attached? %>
                     <%= image_tag current_user.image, width: 30, class: 'rounded-circle' ,alt: "profile image", data: {target: 'image-preview.image'} %>
