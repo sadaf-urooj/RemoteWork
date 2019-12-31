@@ -9,7 +9,7 @@
 
 
 
-skills = ['html', 'javascript', 'bootstrap', 'ruby', 'sinatra', 'c#', 'phython', 'photoshop', 'illistrator']
+skills = ['html', 'javascript', 'bootstrap', 'ruby', 'sinatra', 'c#', 'phython', 'Photoshop', 'illistrator',  'UX/UI', 'PHP']
 
 # s = Skill.create(name: 'html')
 
