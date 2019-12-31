@@ -4,7 +4,7 @@ module Clients
     before_action :find_job, only: [:show, :edit, :destroy, :update]
 
     def index
-      @jobs = Job.all
+      @jobs = current_client.jobs
     end
 
     def new
