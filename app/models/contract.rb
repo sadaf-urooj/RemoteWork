@@ -7,6 +7,6 @@ class Contract < ApplicationRecord
   has_one :job, :through => :proposal
 
     def send_message
-     TwilioClient.new.send_text(freelancer, "#{client.email} has hired for this #{job.title}" )
+     TwilioClient.new.send_text(freelancer, "#{job.client.email} has hired you for job: #{job.title}" )
     end
 end

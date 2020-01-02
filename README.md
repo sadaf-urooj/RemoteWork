@@ -6,13 +6,15 @@
 [Demo Video]()
 
 RemoteWork is an online freelancing platform site which connects talent with opportunity. Remote Work provides services to the job seekers and employers by providing them a platform for job searching and hiring.
-* There are two types of users Client and Freelancer.
+###### There are two types of users Client and Freelancer.
 * Client can post different jobs.
 * Search jobs (filter jobs based on skills)
 * Hire a freelancer
 * End the contract
 * Edit their account (e.g. change password)
 * Clients get SMS notification when a freelancer apply for a job
+
+
 * Freelancer can search jobs (filter jobs based on skills)
 * Apply for a job.
 * End the contract.
