@@ -15,9 +15,15 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg  navbar-dark bg-primary ">
       <div class="container">
-        <%= link_to  freelancer_signed_in? ? freelancers_jobs_path: clients_jobs_path, alt: "Brand", class: 'navbar-brand' do  %>
-          <%= image_tag "Logo.png" %>
+        <% if user_signed_in? %>
+          <%= link_to  freelancer_signed_in? ? freelancers_jobs_path: clients_jobs_path, alt: "Brand", class: 'navbar-brand' do  %>
+            <%= image_tag "Logo.png" %>
           <% end %>
+        <% else %>
+          <%= link_to  root_path alt: "Brand", class: 'navbar-brand' do  %>
+            <%= image_tag "Logo.png" %>
+          <% end %>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
