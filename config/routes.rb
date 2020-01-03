@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   # root 'freelancers/jobs#index'
 
-  devise_for :clients
-  devise_for :freelancers
+  devise_for :freelancers, :controllers => { :registrations => :registrations }
+  devise_for :clients, :controllers => { :registrations => :registrations }
 
   namespace :clients do
     resources :contracts
@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   end
 
-  resources :freelancers
+   resources :freelancers
+
 
 
 end
