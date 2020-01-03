@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="card-footer text-muted">
-        <%= link_to "Back", :back, class: 'btn btn-dark btn-sm' %>
+        <%= link_to "Back", (freelancer_signed_in? ? freelancers_jobs_path : clients_jobs_path) , class: 'btn btn-dark btn-sm' %>
       </div>
     </div>
 </div>
