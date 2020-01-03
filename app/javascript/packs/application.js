@@ -19,10 +19,10 @@ window.$ = $;
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
-    // home page navbar color change on scrolling
+// home page navbar color change on scrolling
 
-$(window).on("scroll", function() {
-    if($(window).scrollTop() > 1000) {
+$(window).on("scroll", function () {
+    if ($(window).scrollTop() > 1000) {
         $(".nav--home").addClass("bg-primary");
         $(".nav").addClass("navbar-dark");
     } else {

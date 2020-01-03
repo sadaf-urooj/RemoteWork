@@ -1,33 +1,32 @@
-  <div class="modal fade proposal-modal" tabindex="-1" role="dialog" data-show="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Apply for job</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <%= form_with  model: [:freelancers, proposal] do |f| %>
-<!--          namespace, model ka object (child)-->
-          <div class="modal-body">
-              <div class="form-group">
-<!--                provide custom id in hidden field-->
-                <%= f.hidden_field :job_id, value: proposal.job.id %>
-                <%= f.label :objective, 'Cover Letter' %>
-                <%= f.text_area :objective, placeholder: 'Write a few words why you are a good fit for this job...',  size: '10x5',  class: "form-control"  %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :documents, 'Attach Documents' %>
-                <%= f.file_field :documents, multiple: true, class: "form-control"  %>
-              </div>
-          </div>
-
-          <div class="modal-footer">
-            <%= f.submit 'Submit Proposal', class: "btn btn-primary btn-sm" %>
-          </div>
-        <%end %>
+<div class="modal fade proposal-modal" tabindex="-1" role="dialog" data-show="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Apply for job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <%= form_with model: [:freelancers, proposal] do |f| %>
+        <!--          namespace, model ka object (child)-->
+        <div class="modal-body">
+          <div class="form-group">
+            <!--                provide custom id in hidden field-->
+            <%= f.hidden_field :job_id, value: proposal.job.id %>
+            <%= f.label :objective, 'Cover Letter' %>
+            <%= f.text_area :objective, placeholder: 'Write a few words why you are a good fit for this job...', size: '10x5', class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :documents, 'Attach Documents' %>
+            <%= f.file_field :documents, multiple: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit 'Submit Proposal', class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
     </div>
   </div>
-
+</div>

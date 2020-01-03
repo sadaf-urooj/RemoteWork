@@ -23,10 +23,4 @@ Rails.application.routes.draw do
   end
 
    resources :freelancers
-
-
-
 end
-
-
-

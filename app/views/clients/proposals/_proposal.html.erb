@@ -1,11 +1,11 @@
 <div class="card mt-5 border-0" id="card_<%= proposal.id %>">
   <div class="card-header">
-    <h5 aclass="w-50 float-left"> <%= proposal.job.title  %></h5>
+    <h5 aclass="w-50 float-left"> <%= proposal.job.title %></h5>
     <div class="w-50 float-right text-right">
       <% if proposal.freelancer.image.attached? %>
-        <%= image_tag proposal.freelancer.image, width: 30, class: 'rounded-circle',  alt: "profile image" %>
+        <%= image_tag proposal.freelancer.image, width: 30, class: 'rounded-circle', alt: "profile image" %>
       <% else %>
-        <i class="fas fa-user-circle fa-5x" ></i>
+        <i class="fas fa-user-circle fa-5x"></i>
       <% end %>
       <%= "#{ proposal.freelancer.first_name.capitalize  }  #{ proposal.freelancer.last_name.capitalize }" %>
     </div>
@@ -15,17 +15,16 @@
     <h5 class="card-title">Overview</h5>
     <p class="card-text"><%= proposal.objective %></p>
     <% proposal.documents.each do |document| %>
-        <%= link_to   rails_blob_path(document, disposition: :attachement), class: 'card-text btn'  do %>
+      <%= link_to rails_blob_path(document, disposition: :attachement), class: 'card-text btn' do %>
         <i class="fas fa-download"></i>
         <%= document.filename %>
-        <% end %>
+      <% end %>
     <% end %>
 
     <% if proposal.contract.present? %>
-      <%= button_tag 'Hired',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+      <%= button_tag 'Hired', disabled: true, class: 'btn btn-primary btn-sm float-right' %>
     <% else %>
-      <%= link_to 'Hire', clients_contracts_path(proposal_id: proposal.id), method: :post, remote: true,  class: "btn btn-primary btn-sm float-right" %>
+      <%= link_to 'Hire', clients_contracts_path(proposal_id: proposal.id), method: :post, remote: true, class: "btn btn-primary btn-sm float-right" %>
     <% end %>
-
   </div>
 </div>

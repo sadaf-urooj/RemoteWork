@@ -5,5 +5,3 @@ var container = document.querySelector('#modal');
 container.innerHTML = "<%= j(render partial: 'freelancers/proposals/modal',locals: {proposal: @proposal}) %>";
 
 $(".proposal-modal").modal('show');
-
-

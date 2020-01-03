@@ -1,11 +1,12 @@
-<div class = "container">
+<div class="container">
   <div class="row">
     <div class="col-8 offset-2">
       <%= form_with model: [:clients, @job] do |f| %>
         <div class="card border-0" style="">
           <div class="card-body">
             <h3>New Job</h3>
-            <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %><div><br><b></b></div>
+            <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %>
+            <div><br><b></b></div>
             <h5 class="card-title">New Job</h5>
 
             <div class="card-text">
@@ -20,11 +21,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
-
 </div>
-
-
-

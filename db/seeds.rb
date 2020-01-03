@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
-
 skills = ['HTML', 'JavaScript', 'CSS', 'Bootstrap', 'Ruby', 'Ruby on Rails', 'Sinatra', 'C#', 'Python', 'PhotoShop', 'Illustrator', 'UX/UI', 'PHP', 'Java', 'C++', 'ORACLE']
 
 # s = Skill.create(name: 'html')

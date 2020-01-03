@@ -15,10 +15,7 @@ module Freelancers
                @jobs
              end
     end
-
     #  @job = Job.includes(:skills).where(["title iLIKE ? OR description iLIKE ?", "%#{params[:search]}%",  "%#{params[:search]}%"]).joins(:skills).where(skills: {name: params[:skills]})
-
-
   end
 end
 

@@ -1,6 +1,7 @@
-<div class = "container">
+<div class="container">
   <h1>New Job</h1>
-  <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %><div><br><b></b></div>
+  <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %>
+  <div><br><b></b></div>
   <%= form_with model: [:clients, @job] do |f| %>
 
     <%= render(:partial => 'form', :locals => {:f => f}) %>
