@@ -27,6 +27,3 @@ module Clients
 
   end
 end
-
-
-

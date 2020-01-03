@@ -1,31 +1,38 @@
-<div class="container mt-5">
-  <% @proposals.each do |proposal|  %>
-    <div class="card mt-5">
-      <div class="card-header">
-        <h5 aclass="w-50 float-left"> <%= proposal.job.title  %></h5>
-        <div class="w-50 float-right text-right">
-          <% if proposal.freelancer.image.attached? %>
-            <%= image_tag proposal.freelancer.image, width: 30, class: 'rounded-circle',  alt: "profile image" %>
-          <% else %>
-            <i class="fas fa-user-circle fa-5x" ></i>
-          <% end %>
-          <%= "#{ proposal.freelancer.first_name.capitalize  }  #{ proposal.freelancer.last_name.capitalize }" %>
+<div class=" container mt-5">
+  <% @proposals.each do |proposal| %>
+    <div class="card mt-5 border-0">
+      <div class="card-body mt-3">
+        <div class="card-title row">
+          <div class="col-6">
+            <h5><%= proposal.job.title %></h5>
+          </div>
+          <div class="col-6 float-right text-right">
+            <button class=" btn btn-link mr-2 text-dark">
+              <% if proposal.freelancer.image.attached? %>
+                <%= image_tag proposal.freelancer.image, width: 30, class: 'rounded-circle', alt: "profile image", data: {target: 'image-preview.image'} %>
+              <% else %>
+                <i class="fas fa-user-circle fa-1x"></i>
+              <% end %>
+              <%= "#{proposal.freelancer.first_name.capitalize  }  #{proposal.freelancer.last_name.capitalize }" %>
+            </button>
+          </div>
         </div>
-      </div>
+        <hr>
 
-      <div class="card-body">
-        <h5 class="card-title">Overview</h5>
-        <p class="card-text"><%= proposal.objective %></p>
+        <p class="font-weight-bold">Overview:</p>
+        <div class="card-text"> <%= proposal.objective %></div>
         <% proposal.documents.each do |document| %>
-          <%= link_to document.filename , rails_blob_path(document, disposition: :attachement), class: 'card-text'  %>
+          <%= link_to rails_blob_path(document, disposition: :attachement), class: 'card-text btn' do %>
+            <i class="fas fa-download"></i>
+            <%= document.filename %>
+          <% end %>
         <% end %>
 
         <% if proposal.contract.present? %>
-          <%= button_tag 'Hired',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+          <%= button_tag 'Hired', disabled: true, class: 'btn btn-primary btn-sm float-right' %>
         <% else %>
-          <%= button_tag 'Applied',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+          <%= button_tag 'Applied', disabled: true, class: 'btn btn-primary btn-sm float-right' %>
         <% end %>
-
       </div>
     </div>
   <% end %>

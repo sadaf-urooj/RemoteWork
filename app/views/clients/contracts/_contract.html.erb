@@ -1,15 +1,15 @@
-<div class="card mt-5" id="card_<%= contract.id %>">
+<div class="card mt-5 border-0" id="card_<%= contract.id %>">
   <div class="card-body mt-3">
     <div class="card-title row">
       <div class="col-6">
         <h5><%= contract.job.title %></h5>
       </div>
       <div class="col-6 float-right text-right">
-        <button class=" btn btn-link mr-2 text-dark"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% if  contract.freelancer.image.attached? %>
-            <%= image_tag contract.freelancer.image, width: 30, class: 'rounded-circle' ,alt: "profile image", data: {target: 'image-preview.image'} %>
+        <button class=" btn btn-link mr-2 text-dark" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if contract.freelancer.image.attached? %>
+            <%= image_tag contract.freelancer.image, width: 30, class: 'rounded-circle', alt: "profile image", data: {target: 'image-preview.image'} %>
           <% else %>
-            <i class="fas fa-user-circle fa-1x" ></i>
+            <i class="fas fa-user-circle fa-1x"></i>
           <% end %>
           <%= "#{contract.freelancer.first_name.capitalize  }  #{contract.freelancer.last_name.capitalize }" %>
         </button>
@@ -21,21 +21,20 @@
     <div class="card-text"> <%= contract.job.description %></div>
     <div class="row">
       <div class="col-6">
-        <p class="card-text mt-4"> <b>Started:</b> <i><%= time_ago_in_words(contract.start_date) %></i> ago </p>
+        <p class="card-text mt-4"><b>Started:</b> <i><%= time_ago_in_words(contract.start_date) %></i> ago </p>
       </div>
 
       <div class="col-6">
         <% if contract.end_date.present? %>
-          <p class="card-text mt-4"> <b>Ends in:</b> <i><%= time_ago_in_words(contract.end_date) %></i> ago </p>
+          <p class="card-text mt-4"><b>Ends in:</b> <i><%= time_ago_in_words(contract.end_date) %></i> ago </p>
         <% end %>
       </div>
     </div>
 
-    <% if  contract.end_date.present? %>
-      <%= button_tag 'End Contract',  disabled: true, class: 'btn btn-primary btn-sm float-right' %>
+    <% if contract.end_date.present? %>
+      <%= button_tag 'End Contract', disabled: true, class: 'btn btn-primary btn-sm float-right' %>
     <% else %>
-      <%= link_to 'End Contract', clients_contract_path(contract), method: :patch, remote: true,  class: "btn btn-primary btn-sm float-right" %>
+      <%= link_to 'End Contract', clients_contract_path(contract), method: :patch, remote: true, class: "btn btn-primary btn-sm float-right" %>
     <% end %>
-
   </div>
 </div>

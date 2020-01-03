@@ -1,24 +1,27 @@
 <div class="container mt-5">
-  <div class="card">
-    <div class="card-header"><h5 class="w-75 d-inline-block">Profile</h5>
-      <% if freelancer_signed_in? %>
-        <div class=" d-inline-block text-right"><i class="fas fa-pen"></i></div>
-        <%= link_to 'Edit',  edit_freelancer_registration_path %>
+  <div class="card border-0">
+    <div class="card-header"><h5 class="w-50 float-left">Profile</h5>
+      <div class=" w-50 text-right float-right">
+        <% if freelancer_signed_in? %>
+          <%= link_to edit_freelancer_registration_path do %>
+            Edit <i class="fas fa-pen"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-      <% end %>
-    <!--    <h5 class="card-header">Profile</h5>-->
+
     <div class="card-body">
       <div class="row">
         <div class="col-2">
           <% if current_user.image.attached? %>
             <%= image_tag current_user.image, class: "w-100 rounded-circle", alt: "profile image", data: {target: 'image-preview.image'} %>
           <% else %>
-            <i class="fas fa-user-circle fa-5x" ></i>
+            <i class="fas fa-user-circle fa-5x"></i>
           <% end %>
         </div>
         <div class="card-text col-10">
           <div class="card-text font-weight-bold"> <%= current_user.first_name.capitalize %></div>
-          <div class="card-text font-weight-bold mt-1"> <%= current_user.designation.capitalize %></div>
+          <div class="card-text font-weight-bold mt-1"> <%= current_user.designation %></div>
         </div>
       </div>
 
@@ -36,4 +39,3 @@
     </div>
   </div>
 </div>
-

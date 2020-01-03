@@ -19,15 +19,15 @@ window.$ = $;
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
-    // home page navbar color change on scrolling
+// home page navbar color change on scrolling
 
-$(window).on("scroll", function() {
-    if($(window).scrollTop() > 1000) {
-        $("nav").addClass("bg-primary");
-        $("nav").addClass("navbar-dark");
+$(window).on("scroll", function () {
+    if ($(window).scrollTop() > 1000) {
+        $(".nav--home").addClass("bg-primary");
+        $(".nav").addClass("navbar-dark");
     } else {
         //remove the background property so it comes transparent again (defined in your css)
-        $("nav").removeClass("bg-primary");
-        $("nav").removeClass("navbar-dark");
+        $(".nav--home").removeClass("bg-primary");
+        $(".nav--home").removeClass("navbar-dark");
     }
 });

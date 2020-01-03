@@ -12,49 +12,44 @@
               <%= notice %>
             </div>
           <% end %>
-          <% if alert %><div class="alert alert-info alert-dismissible mt-5">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <%= alert %></div><% end %>
+          <% if alert %>
+            <div class="alert alert-info alert-dismissible mt-5">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <%= alert %></div>
+          <% end %>
         </div>
-
-        <h1 class="font-weight-light text-white">We expertly match professionals and clients to business seeking opportunities.</h1>
-
-        <%= link_to  'Start Posting Jobs', clients_jobs_path, class: "btn btn-success mt-5 rounded-pill px-5" %>
-
+        <h1 class="font-weight-light text-white">We expertly match professionals and clients to business seeking
+          opportunities.</h1>
+        <%= link_to 'Start Posting Jobs', clients_jobs_path, class: "btn btn-success mt-5 rounded-pill px-5" %>
       </div>
     </div>
   </div>
 </header>
 
-
-
 <!-- Page Content -->
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col">
-          <% @jobs.each do |job| %>
-            <div class="card mt-5 border-right-0 border-left-0 border-top-0">
-              <div class="card-body mt-3">
-                <div class="card-title w-50 float-left"> <h5><%= job.title %></h5></div>
-                <div class="w-50 float-right text-right"><i><%= time_ago_in_words(job.created_at) %></i> ago</div>
-                <div class="clearfix"></div>
-                <p class="font-weight-bold">Description:</p>
-                <div class="card-text"> <%= job.description %></div>
-                <div class="card-text mt-4">
-                  <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %>
-                </div>
-
-                  <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id), remote: true,  class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
-
+<section class="py-5">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col">
+        <% @jobs.each do |job| %>
+          <div class="card mt-5 border-right-0 border-left-0 border-top-0">
+            <div class="card-body mt-3">
+              <div class="card-title w-50 float-left"><h5><%= job.title %></h5></div>
+              <div class="w-50 float-right text-right"><i><%= time_ago_in_words(job.created_at) %></i> ago</div>
+              <div class="clearfix"></div>
+              <p class="font-weight-bold">Description:</p>
+              <div class="card-text"> <%= job.description %></div>
+              <div class="card-text mt-4">
+                <span class="font-weight-bold">Skills: </span><%= job.skills.map(&:name).map(&:capitalize).join(' | ') %>
               </div>
+              <%= link_to 'Apply', new_freelancers_proposal_path(job_id: job.id), remote: (freelancer_signed_in? ? true : false), class: 'btn btn-primary btn-sm float-right rounded-pill px-4' %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>

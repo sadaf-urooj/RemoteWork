@@ -1,6 +1,6 @@
-<div class = "container">
+<div class="container">
   <div class="col-sm-6 offset-3">
-    <div class="card mt-5">
+    <div class="card mt-5 border-0">
       <div class="card-body">
         <h1>Job Detail</h1><br>
         <%= link_to("<< Back to List", clients_jobs_path, class: "btn btn-secondary btn-sm") %>
@@ -15,7 +15,7 @@
         </p>
         <p>
           <strong>Department:</strong>
-          <%= @job.skills.map(&:name).map(&:capitalize).join(',')  %>
+          <%= @job.skills.map(&:name).map(&:capitalize).join(',') %>
         </p>
         <p>
           <strong>Started Date:</strong>

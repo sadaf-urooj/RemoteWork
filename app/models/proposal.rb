@@ -8,6 +8,6 @@ class Proposal < ApplicationRecord
   has_many_attached :documents
 
   def send_message
-    TwilioClient.new.send_text(job.client, "#{freelancer.email} has applied for #{job.title}" )
+    TwilioClient.new.send_text(job.client, "#{freelancer.email} has applied for #{job.title}")
   end
 end
