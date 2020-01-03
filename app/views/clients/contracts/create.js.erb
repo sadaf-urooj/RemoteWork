@@ -1,0 +1,7 @@
+var oldCard = document.querySelector('#card_<%= @proposal.id %>');
+
+var newCard = document.createElement('div');
+newCard.innerHTML = "<%= j(render @proposal) %>";
+
+// replace container with newDiv
+oldCard.parentNode.replaceChild(newCard, oldCard);

@@ -1,5 +1,6 @@
 module Clients
   class JobsController < ApplicationController
+    before_action :authenticate_client!
     before_action :find_job, only: [:show, :edit, :destroy, :update]
 
     def index
@@ -12,6 +13,8 @@ module Clients
 
     def create
       @job = Job.new(job_params.merge(client_id: current_client.id))
+      # @job = Job.new(job_params)
+      # @job.client_id = current_client.id
       if @job.save
         redirect_to clients_jobs_path, notice: 'job Created Successfully'
       else

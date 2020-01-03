@@ -5,5 +5,7 @@ class Client < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :jobs, dependent: :destroy
+  has_many :proposals, through: :jobs
+  has_many :contracts, through: :proposals
 
 end
