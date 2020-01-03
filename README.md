@@ -3,7 +3,7 @@
  
 [https://remote-work-demo.herokuapp.com/](https://remote-work-demo.herokuapp.com/)
 
-[Demo Video]()
+[Demo Video](https://drive.google.com/file/d/1xlQ-xGrM_dcYpZaxVh6CVykI63Y9fbgq/view?usp=sharing)
 
 RemoteWork is an online freelancing platform site which connects talent with opportunity. Remote Work provides services to the job seekers and employers by providing them a platform for job searching and hiring.
 ###### There are two types of users Client and Freelancer.
