@@ -10,7 +10,6 @@
       <%= "#{ proposal.freelancer.first_name.capitalize  }  #{ proposal.freelancer.last_name.capitalize }" %>
     </div>
   </div>
-
   <div class="card-body">
     <h5 class="card-title">Overview</h5>
     <p class="card-text"><%= proposal.objective %></p>
@@ -20,7 +19,6 @@
         <%= document.filename %>
       <% end %>
     <% end %>
-
     <% if proposal.contract.present? %>
       <%= button_tag 'Hired', disabled: true, class: 'btn btn-primary btn-sm float-right' %>
     <% else %>
